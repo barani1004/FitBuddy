@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Users - FitBuddy</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>💪 FitBuddy</h1>
+
+        <h2>👥 All Users</h2>
+
+        {% if user_data %}
+
+            {% for item in user_data %}
+
+                <div class="user-card">
+
+                    <h3>{{ item.user.name }}</h3>
+
+                    <p><strong>Age:</strong> {{ item.user.age }}</p>
+                    <p><strong>Weight:</strong> {{ item.user.weight }}</p>
+                    <p><strong>Goal:</strong> {{ item.user.goal }}</p>
+                    <p><strong>Intensity:</strong> {{ item.user.intensity }}</p>
+
+                    {% if item.workout %}
+
+                        <h3>📋 Original Workout Plan</h3>
+
+                        <div class="plan">
+                            {{ item.original_plan_html | safe }}
+                        </div>
+
+                        {% if item.workout.updated_plan %}
+
+                            <h3>🔄 Updated Workout Plan</h3>
+
+                            <div class="plan">
+                                {{ item.updated_plan_html | safe }}
+                            </div>
+
+                        {% endif %}
+
+                    {% else %}
+
+                        <p>No workout plan found.</p>
+
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No users found.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/">← Back to Home</a>
+
+    </div>
+
+</body>
+</html>

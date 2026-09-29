@@ -30,7 +30,6 @@ For each of the 7 days, provide:
 - Approximate duration
 - A short recovery or safety note
 
-Also provide one general nutrition tip.
 
 Keep the recommendations appropriate for the person's age and avoid extreme dieting or excessive exercise.
 """
@@ -46,5 +45,31 @@ Keep the recommendations appropriate for the person's age and avoid extreme diet
         "weight": weight,
         "goal": goal,
         "intensity": intensity,
-        "plan": response.text
+        "plan": response.text,
+        "nutrition_tip": "Follow a balanced diet, stay hydrated, and choose nutritious foods that support your daily activities."
     }
+
+def update_workout_plan(original_plan, feedback):
+    prompt = f"""
+Update the following fitness plan based on the user's feedback.
+
+Original workout plan:
+{original_plan}
+
+User feedback:
+{feedback}
+
+Create an updated 7-day workout plan that incorporates the user's feedback.
+
+Keep the plan appropriate for the user's age and avoid extreme dieting,
+excessive exercise, or unsafe recommendations.
+
+Return only the updated workout plan.
+"""
+
+    response = client.models.generate_content(
+        model="gemini-3.5-flash-lite",
+        contents=prompt
+    )
+
+    return response.text

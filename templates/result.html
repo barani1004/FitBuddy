@@ -50,6 +50,29 @@
                 {{ plan_html | safe }}
             </div>
 
+            <div class="nutrition-tip">
+                <h2>🥗 Nutrition Tip</h2>
+                <p>{{ result.nutrition_tip }}</p>
+            </div>
+
+            <div class="feedback-section">
+                <h2>📝 Update Your Plan</h2>
+
+                <p>Have feedback about your workout plan? Tell FitBuddy what you would like to change.</p>
+
+                <form action="/submit-feedback" method="post">
+                    <input type="hidden" name="user_id" value="{{ result.user_id }}">
+
+                    <textarea
+                        name="feedback"
+                        placeholder="Example: Make Day 3 easier and add more stretching."
+                        required
+                    ></textarea>
+
+                    <button type="submit">Update My Plan</button>
+                </form>
+            </div>
+
             <a href="/" class="back-link">
                 ← Create Another Plan
             </a>

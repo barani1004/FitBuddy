@@ -19,4 +19,5 @@ class WorkoutPlan(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer)
     plan = Column(Text)
+    updated_plan = Column(Text)
     nutrition_tip = Column(Text)
