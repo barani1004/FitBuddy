@@ -2,6 +2,7 @@ fastapi
 uvicorn
 jinja2
 google-generativeai
+google-genai
 python-dotenv
 sqlalchemy
 markdown
