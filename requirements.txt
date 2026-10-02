@@ -1,8 +1,9 @@
 fastapi
 uvicorn
 jinja2
-google-generativeai
 google-genai
+google-generativeai
 python-dotenv
 sqlalchemy
 markdown
+python-multipart
