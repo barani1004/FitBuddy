@@ -4,3 +4,4 @@ jinja2
 google-generativeai
 python-dotenv
 sqlalchemy
+markdown
